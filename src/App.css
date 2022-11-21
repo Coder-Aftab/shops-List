@@ -107,6 +107,7 @@ body {
   margin: 1rem;
   font-size: 1.6rem;
   font-weight: 500;
+  white-space: nowrap;
 }
 
 .btn--accent {
@@ -120,13 +121,24 @@ body {
   color: #fff;
 }
 .btn--large {
-  max-width: 16rem;
+  max-width: 14rem;
+  max-height: 5rem;
 }
 .btn--small {
   max-width: 10rem;
 }
+@media screen and (min-width: 760px) {
+  .btn--large {
+    max-width: 16rem;
+    max-height: 7.4rem;
+  }
+}
 /* Navbar */
 .nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  grid-area: header;
   background: var(--color-primary);
 }
 .nav__heading {
@@ -136,9 +148,43 @@ body {
   letter-spacing: -0.1rem;
   font-size: 3.6rem;
 }
+.nav .active {
+  background: var(--color-primary);
+}
+
 @media screen and (min-width: 760px) {
   .nav__heading {
     font-size: 4rem;
   }
 }
 
+/* Aside Bar */
+.aside-bar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  grid-area: aside-bar;
+  justify-items: center;
+  justify-self: center;
+}
+@media screen and (min-width: 760px) {
+  .aside-bar {
+    flex-direction: column;
+    margin: 2rem 0 0 2rem;
+    justify-self: flex-start;
+  }
+}
+
+/*  App */
+.App {
+  display: grid;
+  grid-template-rows: 100px minmax(123px, 160px) 1fr;
+  grid-template-areas: "header" "aside-bar" "main";
+}
+@media screen and (min-width: 760px) {
+  .App {
+    grid-template-rows: 100px minmax(123px, 160px) auto;
+    grid-template-columns: 200px auto;
+    grid-template-areas: "header header" "aside-bar main";
+  }
+}

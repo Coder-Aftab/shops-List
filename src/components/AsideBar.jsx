@@ -7,7 +7,9 @@ function AsideBar() {
       <NavLink
         to="/shops"
         className={({ isActive }) =>
-          isActive ? "active btn btn--accent" : "btn btn--accent"
+          isActive
+            ? "active btn btn--accent btn--large"
+            : "btn btn--accent btn--large"
         }
       >
         List Shops
@@ -15,7 +17,9 @@ function AsideBar() {
       <NavLink
         to="/addshop"
         className={({ isActive }) =>
-          isActive ? "active btn btn--accent" : "btn btn--accent"
+          isActive
+            ? "active btn btn--accent btn-large"
+            : "btn btn--accent btn--large"
         }
       >
         Add Shop
