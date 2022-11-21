@@ -1,9 +1,14 @@
-import { useRef, useState } from "react";
+import React, { useRef, useState } from "react";
+import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import { useSelector, useDispatch } from "react-redux";
 import { shopsAdded, shopsRemoved } from "./store/shops";
-import Form from "./components/form";
-
+import Form from "./components/Form";
+import DashBoard from "./components/DashBoard";
+import PlayGround from "./playground";
+import NavBar from "./components/NavBar";
+import Shops from "./components/Shops";
+import AsideBar from "./components/AsideBar";
 const App = () => {
   const getState = useSelector((state) => state);
   const initialState = {
@@ -42,11 +47,23 @@ const App = () => {
   };
   return (
     <div className="App">
-      <Form
-        formData={formData}
-        handleChange={handleChange}
-        handleSubmit={handleSubmit}
-      />
+      <NavBar />
+      <AsideBar />
+      <Routes>
+        <Route path="/" element={<DashBoard />}></Route>
+        <Route
+          path="/addshop"
+          element={
+            <Form
+              formData={formData}
+              handleChange={handleChange}
+              handleSubmit={handleSubmit}
+            />
+          }
+        ></Route>
+        <Route path="/playground" element={<PlayGround />}></Route>
+        <Route path="/shops" element={<Shops />}></Route>
+      </Routes>
     </div>
   );
 };

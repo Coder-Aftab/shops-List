@@ -32,7 +32,6 @@ body {
   font-size: 1.6rem;
   font-weight: normal;
   line-height: 1.2;
-  padding: 1rem;
 }
 
 @media screen and (min-width: 760px) {
@@ -101,10 +100,12 @@ body {
 /* Buttons */
 
 .btn {
+  text-align: center;
+  width: 100%;
   padding: 1rem 2rem;
   border-radius: 2rem;
   margin: 1rem;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   font-weight: 500;
 }
 
@@ -113,11 +114,31 @@ body {
   border: 2px solid var(--color-accent);
   transition: all 0.3s;
 }
-.btn--accent:hover {
+.btn--accent:hover,
+.active {
   background: var(--color-accent);
   color: #fff;
 }
 .btn--large {
-  width: 100%;
   max-width: 16rem;
 }
+.btn--small {
+  max-width: 10rem;
+}
+/* Navbar */
+.nav {
+  background: var(--color-primary);
+}
+.nav__heading {
+  text-align: center;
+  color: var(--color-secondary);
+  font-weight: 400;
+  letter-spacing: -0.1rem;
+  font-size: 3.6rem;
+}
+@media screen and (min-width: 760px) {
+  .nav__heading {
+    font-size: 4rem;
+  }
+}
+
