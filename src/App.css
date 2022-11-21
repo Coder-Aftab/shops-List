@@ -28,10 +28,11 @@ h3 {
   font-size: 2.4rem;
 }
 
-.body {
-  font-size: 2rem;
+body {
+  font-size: 1.6rem;
   font-weight: normal;
   line-height: 1.2;
+  padding: 1rem;
 }
 
 @media screen and (min-width: 760px) {
@@ -46,6 +47,7 @@ h3 {
   }
 }
 
+/* Forms */
 #name,
 #category,
 #opening-date,
@@ -54,13 +56,15 @@ h3 {
   border: 2px solid var(--color-secondary);
   padding: 1rem;
   min-width: 80%;
+  border-radius: 1rem;
 }
 .input-form {
   display: flex;
   flex-direction: column;
   /* align-items: center;
   justify-content: center; */
-  font-size: 2rem;
+  font-size: 1.6rem;
+  border-radius: 2rem;
   border: 2px solid var(--color-secondary);
   width: 100%;
   max-width: 680px;
@@ -71,7 +75,7 @@ h3 {
   display: grid;
   align-items: center;
   grid-template-columns: repeat(2, 1fr);
-  margin: 2rem 0;
+  margin: 1rem 0;
   width: 100%;
   max-width: 400px;
   color: var(--color-secondary);
@@ -79,13 +83,28 @@ h3 {
 }
 .form__input label {
   margin-right: 2rem;
+  font-weight: 600;
 }
+.form__submit-btn {
+  align-self: center;
+}
+.form__heading {
+  font-size: 3.6rem;
+  text-align: center;
+  color: var(--color-secondary);
+  font-weight: 700;
+}
+
+@media screen and (min-width: 760px) {
+}
+
+/* Buttons */
 
 .btn {
   padding: 1rem 2rem;
   border-radius: 2rem;
   margin: 1rem;
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: 500;
 }
 
@@ -101,8 +120,4 @@ h3 {
 .btn--large {
   width: 100%;
   max-width: 16rem;
-}
-
-.form__submit-btn {
-  margin: auto;
 }
