@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { shopsAdded } from "../store/shops";
 function Form() {
-  const [curId, setId] = useState(0);
+  const [curId, setId] = useState(4);
   const initialState = {
     id: curId,
     name: "",
@@ -17,7 +17,7 @@ function Form() {
     let value,
       name = e.target.name;
     if (e.target.name === "name") {
-      value = e.target.value.replace(/[^a-z]/gi, "");
+      value = e.target.value.replace(/[^a-z," "]/gi, "");
     } else if (name == "closingDate") {
       if (formData.openingDate == "") {
         alert("Please Provide opening date first");
