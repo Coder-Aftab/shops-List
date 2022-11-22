@@ -1,6 +1,25 @@
-import React from "react";
-
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { shopsUpdate } from "../store/shops";
 function FilterShops() {
+  const dispatch = useDispatch();
+  const initialState = {
+    area: "all",
+    category: "all",
+    open: "all",
+    close: "all",
+  };
+  const [curFilter, setFilter] = useState(initialState);
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFilter((prevFilter) => {
+      return {
+        ...prevFilter,
+        [name]: value,
+      };
+    });
+  };
+  console.log(curFilter);
   return (
     <div className=" filter__wrapper">
       <header className="filter__header">
@@ -8,8 +27,14 @@ function FilterShops() {
       </header>
       <ul className="filter__list">
         <li className="list__items">
-          <select name="area" id="" className="area__filter">
-            <option value="">Area</option>
+          <select
+            name="area"
+            id=""
+            className="area__filter"
+            value={setFilter.area}
+            onChange={handleChange}
+          >
+            <option value="all">Area</option>
             <option value="Thane">Thane</option>
             <option value="Pune">Pune</option>
             <option value="Mumbai Suburban">Mumbai Suburban</option>
@@ -19,8 +44,14 @@ function FilterShops() {
           </select>
         </li>
         <li className="list__items">
-          <select name="category" id="" className="category__filter">
-            <option value="">Category</option>
+          <select
+            name="category"
+            id=""
+            className="category__filter"
+            value={setFilter.category}
+            onChange={handleChange}
+          >
+            <option value="all">Category</option>
             <option value="Grocery">Grocery</option>
             <option value="Butcher">Butcher</option>
             <option value="Baker">Baker</option>

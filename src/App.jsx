@@ -1,8 +1,8 @@
 import React, { useRef, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
-import { useSelector, useDispatch } from "react-redux";
-import { shopsAdded, shopsRemoved } from "./store/shops";
+import { useDispatch } from "react-redux";
+import { shopsAdded } from "./store/shops";
 import Form from "./components/Form";
 import DashBoard from "./components/DashBoard";
 import PlayGround from "./playground";
@@ -10,10 +10,9 @@ import NavBar from "./components/NavBar";
 import Shops from "./components/Shops";
 import AsideBar from "./components/AsideBar";
 const App = () => {
-  const getState = useSelector((state) => state);
   const [curId, setId] = useState(0);
-
   const initialState = {
+    id: curId,
     name: "",
     area: "",
     category: "",
@@ -27,6 +26,19 @@ const App = () => {
       name = e.target.name;
     if (e.target.name === "name") {
       value = e.target.value.replace(/[^a-z]/gi, "");
+    } else if (name == "closingDate") {
+      if (formData.openingDate == "") {
+        alert("Please Provide opening date first");
+        value = "";
+      } else {
+        value = e.target.value;
+        const greater =
+          new Date(value).getTime() - new Date(formData.openingDate).getTime();
+        if (greater < 0) {
+          alert("Opening Date Must be greater");
+          value = "";
+        }
+      }
     } else {
       value = e.target.value;
     }
@@ -40,14 +52,11 @@ const App = () => {
   };
 
   const handleSubmit = (e) => {
-    setId(curId + 1);
-    //console.log(formData);
     dispatch(shopsAdded({ ...formData, id: curId }));
     e.preventDefault();
+    setId(curId + 1);
     setFormData(initialState);
-    //console.log(getState);
   };
-  //console.log(new Date());
   return (
     <div className="App">
       <NavBar />

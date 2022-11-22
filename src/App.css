@@ -287,6 +287,9 @@ body {
   .category__filter {
     width: 10rem;
   }
+  .main--container {
+    justify-self: stretch;
+  }
 }
 
 /* Shop list */

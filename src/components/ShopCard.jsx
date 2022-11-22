@@ -1,7 +1,9 @@
 import React from "react";
-
+import { useDispatch } from "react-redux";
+import { shopsRemoved } from "../store/shops";
 function ShopCard(props) {
-  const { name, area, category, openingDate, closingDate } = props.data;
+  const dispatch = useDispatch();
+  const { id, name, area, category, openingDate, closingDate } = props.data;
   const index = props.index;
   return (
     <div className="shop__card shop__card--outline">
@@ -14,7 +16,14 @@ function ShopCard(props) {
         <li>{openingDate}</li>
         <li>{closingDate}</li>
         <li>
-          <button className="btn btn--accent btn--small">Delete</button>
+          <button
+            className="btn btn--accent btn--small"
+            onClick={() => {
+              dispatch(shopsRemoved({ id }));
+            }}
+          >
+            Delete
+          </button>
         </li>
       </ul>
     </div>

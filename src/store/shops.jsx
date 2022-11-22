@@ -13,6 +13,7 @@ const shopsSlice = createSlice({
     },
 
     shopsRemoved: (shops, action) => {
+      console.log(action);
       return shops.filter((shop) => shop.id !== action.payload.id);
     },
 
