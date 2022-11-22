@@ -1,13 +1,13 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-import { resolve } from "path";
-// https://vitejs.dev/config/
+import path from "path";
+
 export default defineConfig({
   resolve: {
     alias: [
       {
         find: "common",
-        replacement: resolve(__dirname, "src/common"),
+        replacement: path.resolve(__dirname, "src/common"),
       },
     ],
   },

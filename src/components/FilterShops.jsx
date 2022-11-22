@@ -1,25 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { shopsUpdate } from "../store/shops";
-function FilterShops() {
-  const dispatch = useDispatch();
-  const initialState = {
-    area: "all",
-    category: "all",
-    open: "all",
-    close: "all",
-  };
-  const [curFilter, setFilter] = useState(initialState);
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFilter((prevFilter) => {
-      return {
-        ...prevFilter,
-        [name]: value,
-      };
-    });
-  };
-  console.log(curFilter);
+function FilterShops({ localFilter, handleChange }) {
   return (
     <div className=" filter__wrapper">
       <header className="filter__header">
@@ -31,16 +11,16 @@ function FilterShops() {
             name="area"
             id=""
             className="area__filter"
-            value={setFilter.area}
+            value={localFilter.area}
             onChange={handleChange}
           >
             <option value="all">Area</option>
-            <option value="Thane">Thane</option>
-            <option value="Pune">Pune</option>
-            <option value="Mumbai Suburban">Mumbai Suburban</option>
-            <option value="Nashik">Nashik</option>
-            <option value="Ahmednagar">Ahmednagar</option>
-            <option value="Solapur">Solapur</option>
+            <option value="thane">Thane</option>
+            <option value="pune">Pune</option>
+            <option value="mumbai suburban">Mumbai Suburban</option>
+            <option value="nashik">Nashik</option>
+            <option value="ahmednagar">Ahmednagar</option>
+            <option value="solapur">Solapur</option>
           </select>
         </li>
         <li className="list__items">
@@ -48,20 +28,31 @@ function FilterShops() {
             name="category"
             id=""
             className="category__filter"
-            value={setFilter.category}
+            value={localFilter.category}
             onChange={handleChange}
           >
             <option value="all">Category</option>
-            <option value="Grocery">Grocery</option>
-            <option value="Butcher">Butcher</option>
-            <option value="Baker">Baker</option>
-            <option value="Chemist">Chemist</option>
-            <option value="Stationary">Stationary</option>
+            <option value="grocery">Grocery</option>
+            <option value="butcher">Butcher</option>
+            <option value="baker">Baker</option>
+            <option value="chemist">Chemist</option>
+            <option value="stationary">Stationary</option>
           </select>
         </li>
 
-        <li className="list__items">Open</li>
-        <li className="list__items">Closed</li>
+        <li className="list__items">
+          <label htmlFor="status">Status:</label>
+          <select
+            name="status"
+            value={localFilter.status}
+            onChange={handleChange}
+            className="category__filter"
+          >
+            <option value="all">All</option>
+            <option value="open">Open</option>
+            <option value="close">Close</option>
+          </select>
+        </li>
       </ul>
     </div>
   );

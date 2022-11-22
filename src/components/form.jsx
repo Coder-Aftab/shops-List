@@ -1,9 +1,58 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { shopsAdded } from "../store/shops";
+function Form() {
+  const [curId, setId] = useState(0);
+  const initialState = {
+    id: curId,
+    name: "",
+    area: "",
+    category: "",
+    openingDate: "",
+    closingDate: "",
+  };
+  const [formData, setFormData] = useState(initialState);
+  const dispatch = useDispatch();
+  const handleChange = (e) => {
+    let value,
+      name = e.target.name;
+    if (e.target.name === "name") {
+      value = e.target.value.replace(/[^a-z]/gi, "");
+    } else if (name == "closingDate") {
+      if (formData.openingDate == "") {
+        alert("Please Provide opening date first");
+        value = "";
+      } else {
+        value = e.target.value;
+        const greater =
+          new Date(value).getTime() - new Date(formData.openingDate).getTime();
+        if (greater < 0) {
+          alert("Opening Date Must be greater");
+          value = "";
+        }
+      }
+    } else {
+      value = e.target.value;
+    }
 
-function Form(props) {
+    setFormData((prevFormData) => {
+      return {
+        ...prevFormData,
+        [name]: value,
+      };
+    });
+  };
+
+  const handleSubmit = (e) => {
+    dispatch(shopsAdded({ ...formData, id: curId }));
+    e.preventDefault();
+    setId(curId + 1);
+    setFormData(initialState);
+  };
+
   return (
     <div className="main--container">
-      <form className="input-form" onSubmit={(e) => props.handleSubmit(e)}>
+      <form className="input-form" onSubmit={(e) => handleSubmit(e)}>
         <div>
           <h2 className="form__heading">Add Shop</h2>
         </div>
@@ -14,8 +63,8 @@ function Form(props) {
             id="name"
             name="name"
             placeholder="Shop name"
-            onChange={props.handleChange}
-            value={props.formData.name}
+            onChange={handleChange}
+            value={formData.name}
             required
           />
         </div>
@@ -25,17 +74,17 @@ function Form(props) {
             type="text"
             id="area"
             name="area"
-            onChange={props.handleChange}
-            value={props.formData.area}
+            onChange={handleChange}
+            value={formData.area}
           >
             <option value="">---Choose---</option>
-            <option value="Thane">Thane</option>
-            <option value="Pune">Pune</option>
-            <option value="Mumbai Suburban">Mumbai Suburban</option>
-            <option value="Nashik">Nashik</option>
-            <option value="Ahmednagar">Ahmednagar</option>
+            <option value="thane">Thane</option>
+            <option value="pune">Pune</option>
+            <option value="mumbai suburban">Mumbai Suburban</option>
+            <option value="nashik">Nashik</option>
+            <option value="ahmednagar">Ahmednagar</option>
 
-            <option value="Solapur">Solapur</option>
+            <option value="solapur">Solapur</option>
           </select>
         </div>
         <div className="form__input">
@@ -44,16 +93,16 @@ function Form(props) {
             id="category"
             name="category"
             placeholder="enter shop category"
-            value={props.formData.category}
-            onChange={props.handleChange}
+            value={formData.category}
+            onChange={handleChange}
             required
           >
             <option value="">---Choose---</option>
-            <option value="Grocery">Grocery</option>
-            <option value="Butcher">Butcher</option>
-            <option value="Baker">Baker</option>
-            <option value="Chemist">Chemist</option>
-            <option value="Stationary">Stationary</option>
+            <option value="grocery">Grocery</option>
+            <option value="butcher">Butcher</option>
+            <option value="baker">Baker</option>
+            <option value="chemist">Chemist</option>
+            <option value="stationary">Stationary</option>
           </select>
         </div>
         <div className=" form__input">
@@ -62,8 +111,8 @@ function Form(props) {
             type="date"
             name="openingDate"
             id="opening-date"
-            onChange={props.handleChange}
-            value={props.formData.openingDate}
+            onChange={handleChange}
+            value={formData.openingDate}
             required
           />
         </div>
@@ -73,8 +122,8 @@ function Form(props) {
             type="date"
             id="closing-date"
             name="closingDate"
-            onChange={props.handleChange}
-            value={props.formData.closingDate}
+            onChange={handleChange}
+            value={formData.closingDate}
             required
           />
         </div>

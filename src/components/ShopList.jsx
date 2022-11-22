@@ -1,14 +1,12 @@
 import React, { useState } from "react";
 import ShopCard from "./ShopCard";
 import ShopListHeader from "./ShopListHeader";
-import { useSelector } from "react-redux";
-function ShopList() {
-  const getShops = useSelector((state) => state.shops);
-  console.log(getShops);
+function ShopList(props) {
+  //console.log(props.curState);
   return (
     <div className="shop-list shop-list--outline">
       <ShopListHeader />
-      {getShops.map((item, index) => {
+      {props.curState.map((item, index) => {
         return <ShopCard data={item} key={index} index={index} />;
       })}
     </div>

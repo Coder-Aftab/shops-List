@@ -200,6 +200,7 @@ body {
   margin: 2rem 0 0;
   grid-template-columns: 5rem auto;
   align-content: center;
+  text-transform: capitalize;
 }
 .shop__card--outline {
   border: 2px solid var(--color-secondary);
