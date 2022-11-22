@@ -6,7 +6,7 @@ const shopsSlice = createSlice({
   initialState: [
     {
       id: 0,
-      name: "chemist",
+      name: "Sharma chemist",
       area: "thane",
       category: "chemist",
       openingDate: "2022-11-08",
@@ -14,7 +14,7 @@ const shopsSlice = createSlice({
     },
     {
       id: 1,
-      name: "stationary",
+      name: "Gupta stationary",
       area: "mumbai suburban",
       category: "stationary",
       openingDate: "2022-11-08",
@@ -22,17 +22,17 @@ const shopsSlice = createSlice({
     },
     {
       id: 2,
-      name: "butcher shop",
+      name: "Safal Groceries",
       area: "pune",
-      category: "butcher",
+      category: "grocery",
       openingDate: "2022-11-08",
       closingDate: "2022-12-01",
     },
     {
       id: 3,
-      name: "butcher 2 shop",
+      name: "Rehman Bakery",
       area: "thane",
-      category: "butcher",
+      category: "Bakery",
       openingDate: "2022-11-08",
       closingDate: "2022-11-20",
     },
