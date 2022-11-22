@@ -11,6 +11,8 @@ import Shops from "./components/Shops";
 import AsideBar from "./components/AsideBar";
 const App = () => {
   const getState = useSelector((state) => state);
+  const [curId, setId] = useState(0);
+
   const initialState = {
     name: "",
     area: "",
@@ -36,15 +38,16 @@ const App = () => {
       };
     });
   };
-  // console.log(formData);
 
   const handleSubmit = (e) => {
-    console.log(formData);
-    dispatch(shopsAdded(formData));
+    setId(curId + 1);
+    //console.log(formData);
+    dispatch(shopsAdded({ ...formData, id: curId }));
     e.preventDefault();
     setFormData(initialState);
-    console.log(getState);
+    //console.log(getState);
   };
+  //console.log(new Date());
   return (
     <div className="App">
       <NavBar />

@@ -1,16 +1,18 @@
 import React from "react";
 
-function ShopCard() {
+function ShopCard(props) {
+  const { name, area, category, openingDate, closingDate } = props.data;
+  const index = props.index;
   return (
     <div className="shop__card shop__card--outline">
-      <span className="sno">1.</span>
+      <span className="sno">{index + 1}.</span>
 
       <ul className="shop__card__section">
-        <li>ABC Shop</li>
-        <li>Thane</li>
-        <li>Chemist</li>
-        <li>21-11-2022</li>
-        <li>25-11-2022</li>
+        <li>{name}</li>
+        <li>{area}</li>
+        <li>{category}</li>
+        <li>{openingDate}</li>
+        <li>{closingDate}</li>
         <li>
           <button className="btn btn--accent btn--small">Delete</button>
         </li>

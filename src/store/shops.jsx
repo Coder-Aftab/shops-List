@@ -1,12 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { createSelector } from "@reduxjs/toolkit";
-
+const lastId = 0;
 const shopsSlice = createSlice({
   name: "shops",
   initialState: [],
+
   reducers: {
     shopsAdded: (shops, action) => {
+      // lastId += 1
       shops.push(action.payload);
+      //      shops.push({ ...action.payload, id: lastId });
     },
 
     shopsRemoved: (shops, action) => {
