@@ -1,10 +1,11 @@
 import React from "react";
-import ShopCard from "./ShopCard";
-
+import FilterShops from "./FilterShops";
+import ShopList from "./ShopList";
 function Shops() {
   return (
-    <div>
-      <ShopCard />
+    <div className="main--container">
+      <FilterShops />
+      <ShopList/>
     </div>
   );
 }

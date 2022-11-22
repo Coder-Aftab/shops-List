@@ -2,7 +2,7 @@ import React from "react";
 
 function Form(props) {
   return (
-    <div>
+    <div className="main--container">
       <form className="input-form" onSubmit={(e) => props.handleSubmit(e)}>
         <div>
           <h2 className="form__heading">Add Shop</h2>
@@ -38,7 +38,7 @@ function Form(props) {
             <option value="Solapur">Solapur</option>
           </select>
         </div>
-        <div className=" form__input">
+        <div className="form__input">
           <label htmlFor="category">Category</label>
           <select
             id="category"
