@@ -27,7 +27,7 @@ function Form() {
         const greater =
           new Date(value).getTime() - new Date(formData.openingDate).getTime();
         if (greater < 0) {
-          alert("Opening Date Must be greater");
+          alert("Closing date must be greater");
           value = "";
         }
       }
@@ -48,6 +48,7 @@ function Form() {
     e.preventDefault();
     setId(curId + 1);
     setFormData(initialState);
+    alert("Shop details added");
   };
 
   return (
