@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { createSelector } from "@reduxjs/toolkit";
+import { createSelector } from "reselect";
 const lastId = 0;
 const shopsSlice = createSlice({
   name: "shops",
@@ -60,15 +60,19 @@ const shopsSlice = createSlice({
 export const { shopsAdded, shopsRemoved, shopsUpdate } = shopsSlice.actions;
 export default shopsSlice.reducer;
 
-export const filterShops = ({ area, category, status }) =>
-  createSelector(
-    (state) =>
-      state.filter((shop) => {
+export const filterShops =
+  ({ area, category, status }) =>
+  (states) => {
+    return states
+      .filter((shop) => {
+        if (category !== "all") return shop.category === category;
+        return shop;
+      })
+      .filter((shop) => {
         if (area !== "all") return shop.area === area;
         return shop;
-      }),
-    (state) =>
-      state.filter((shop) => {
+      })
+      .filter((shop) => {
         if (status !== "all") {
           if (status === "open") {
             return new Date(shop.closingDate).getTime() >= new Date().getTime();
@@ -77,10 +81,5 @@ export const filterShops = ({ area, category, status }) =>
           }
         }
         return shop;
-      }),
-    (state) =>
-      state.filter((shop) => {
-        if (category !== "all") return shop.category === category;
-        return shop;
-      })
-  );
+      });
+  };
