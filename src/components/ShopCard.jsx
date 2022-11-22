@@ -15,10 +15,22 @@ function ShopCard(props) {
 
       <ul className="shop__card__section">
         <li>{name}</li>
-        <li>{area}</li>
-        <li>{category}</li>
-        <li>{open}</li>
-        <li>{close}</li>
+        <li>
+          <span className="card__mobile__content">Area : </span>
+          <span>{area}</span>
+        </li>
+        <li>
+          <span className="card__mobile__content">Category : </span>
+          <span>{category}</span>
+        </li>
+        <li>
+          <span className="card__mobile__content">Open : </span>
+          {open}
+        </li>
+        <li>
+          <span className="card__mobile__content">Close : </span>
+          {close}
+        </li>
         <li>
           <button
             className="btn btn--accent btn--small"

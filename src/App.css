@@ -224,6 +224,7 @@ body {
     grid-template-columns: 1.5fr repeat(5, 1fr);
     grid-template-rows: 1fr;
     align-items: center;
+
   }
   .shop__card {
     max-width: 100%;
@@ -231,6 +232,9 @@ body {
   }
   .sno {
     align-items: center;
+  }
+  .card__mobile__content{
+    display: none;
   }
 }
 
